@@ -2,20 +2,98 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  background: #f1eee0;
+  color: black;
+}
+
+.skewed-div {
+  clip-path: polygon(0 0, 100% 0%, 95% 100%, 0 90%);
+}
+.skewed-div2 {
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+}
+
+.card-title {
+  clip-path: polygon(0% 0%, 90% 10%, 100% 90%, 5% 100%);
+}
+
+.card-name {
+  clip-path: polygon(0% 0%, 100% 30%, 100% 100%, 0% 90%);
+}
+
+.envelope {
+  width: 550px;
+  height: 600px;
+  background-color: #c6c6c6;
+  clip-path: polygon(0% 100%, 0% 50%, 50% 70%, 100% 50%, 100% 100%);
+  border: 2px solid black;
+  z-index: 20;
+  will-change: transform;
+}
+
+.envelope::before {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background-color: #ffffff; /* Flap color */
+  clip-path: polygon(0% 100%, 70% 0%, 100% 100%);
+  z-index: 20;
+}
+.envelope2 {
+  width: 550px;
+  height: 250px;
+  z-index: 10;
+  background-color: #ffffff; /* Envelope base color */
+  position: relative;
+  clip-path: polygon(0% 100%, 0% 50%, 50% 0%, 100% 50%, 100% 100%);
+}
+
+.envelope2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #ffffff; /* Flap color */
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  z-index: 10;
+}
+.envelope3 {
+  width: 550px;
+  height: 250px;
+  z-index: 0;
+  background-color: #000000; /* Envelope base color */
+  position: absolute;
+  bottom: 223.5px;
+  clip-path: polygon(0% 100%, 0% 50%, 50% 0%, 100% 50%, 100% 100%);
+}
+
+.envelope3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #000000; /* Flap color */
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+.envelope,
+.envelope2,
+.envelope3,
+.card {
+  will-change: transform, z-index;
 }

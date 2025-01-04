@@ -1,3 +1,5 @@
+import { Lexend } from "next/font/google";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -10,6 +12,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontFamily: {
+        lexend: ["var(--font-lexend)", "serif"],
+        geistSans: ["var(--font-geist-sans)", "sans-serif"],
+        geistMono: ["var(--font-geist-mono)", "monospace"],
+        barlow: ["var(--font-barlow)", "serif"],
       },
     },
   },
