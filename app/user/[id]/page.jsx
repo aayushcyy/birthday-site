@@ -1,6 +1,5 @@
 "use client";
 
-// app/user/[id]/page.jsx
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { db } from "../../../lib/firebase";
@@ -9,27 +8,38 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import Candle from "@/app/Component/Candle";
 
-export default function UserPage({ params }) {
-  const { id } = params; // Access the route parameter
+export default function UserPage({ params: paramsPromise }) {
+  const [params, setParams] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showCard, setShowCard] = useState(false);
+  const [isExtinguished, setIsExtinguished] = useState(false);
   const router = useRouter();
 
   const containerRef = useRef(null);
   const frontRef = useRef(null);
   const contentRef = useRef(null);
 
-  // Fetch user data on mount
   useEffect(() => {
+    async function unwrapParams() {
+      const unwrappedParams = await paramsPromise;
+      setParams(unwrappedParams);
+    }
+
+    unwrapParams();
+  }, [paramsPromise]);
+
+  useEffect(() => {
+    if (!params) return;
+
     const fetchData = async () => {
       try {
-        const docRef = doc(db, "users", id);
+        const docRef = doc(db, "users", params.id); // Access `id` here after unwrapping
         const docSnap = await getDoc(docRef);
 
         if (!docSnap.exists()) {
           console.error("User not found");
-          router.push("/404"); // Redirect to 404 page
+          router.push("/404");
           return;
         }
 
@@ -42,13 +52,11 @@ export default function UserPage({ params }) {
     };
 
     fetchData();
-  }, [id, router]);
+  }, [params, router]);
 
-  // Animation handler
   const handleClick = () => {
     const timeline = gsap.timeline();
 
-    // Animate the front page flipping
     timeline.to(frontRef.current, {
       rotationY: -180,
       transformOrigin: "left center",
@@ -56,25 +64,24 @@ export default function UserPage({ params }) {
       ease: "power2.inOut",
     });
 
-    // Adjust the container's width to keep the book centered
     timeline.to(
       containerRef.current,
       {
-        width: "900px", // Adjust width after flipping
+        width: "900px",
         duration: 0.5,
         ease: "power2.inOut",
       },
-      "<" // Start during the flipping animation
+      "<"
     );
 
     timeline.to(
       contentRef.current,
       {
-        opacity: 0, // Fade out
+        opacity: 0,
         duration: 0.5,
         ease: "power2.out",
       },
-      "-=1" // Start during the flipping animation
+      "-=1"
     );
   };
 
@@ -91,9 +98,9 @@ export default function UserPage({ params }) {
       const checkSound = () => {
         analyser.getByteFrequencyData(dataArray);
         const volume = dataArray.reduce((a, b) => a + b, 0);
-        if (volume > 10000) {
+        if (volume > 5000) {
+          setIsExtinguished(true);
           console.log("Candle extinguished!");
-          // Trigger animation or action
         } else {
           requestAnimationFrame(checkSound);
         }
@@ -104,7 +111,7 @@ export default function UserPage({ params }) {
 
   if (loading) return <div>Loading...</div>;
 
-  if (!userData) return null; // Fallback in case of error
+  if (!userData) return null;
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center bg-[#F1EEE0]">
@@ -114,7 +121,6 @@ export default function UserPage({ params }) {
           ref={containerRef}
           onClick={handleClick}
         >
-          {/* Front Page */}
           <div
             ref={frontRef}
             className="w-[450px] h-[500px] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
@@ -135,7 +141,6 @@ export default function UserPage({ params }) {
             </div>
           </div>
 
-          {/* Back Page */}
           <div className="absolute w-[450px] h-[500px] bg-cover bg-[url('/carddd.jpg')] border-l-2 border-[#414141] z-5 flex items-center flex-col">
             <p className="font-barlow text-[90px] leading-[1.15] font-semibold uppercase text-[#020817]">
               Blow!
@@ -154,12 +159,8 @@ export default function UserPage({ params }) {
           </div>
         </div>
       )}
-      <Candle />
+      <Candle isExtinguished={isExtinguished} />
 
-      {/* User message */}
-      {/* <p className="mt-4 text-lg font-semibold">Message: {userData.message}</p> */}
-
-      {/* Candle blow button */}
       {!showCard && (
         <div className="w-full h-screen z-50 bg-[#f1eee06d] flex flex-col items-center justify-center relative">
           <p className="-mt-40 font-lexend mb-20">
