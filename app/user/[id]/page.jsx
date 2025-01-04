@@ -7,6 +7,7 @@ import { db } from "../../../lib/firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { gsap } from "gsap";
 import Image from "next/image";
+import Candle from "@/app/Component/Candle";
 
 export default function UserPage({ params }) {
   const { id } = params; // Access the route parameter
@@ -153,6 +154,7 @@ export default function UserPage({ params }) {
           </div>
         </div>
       )}
+      <Candle />
 
       {/* User message */}
       {/* <p className="mt-4 text-lg font-semibold">Message: {userData.message}</p> */}
