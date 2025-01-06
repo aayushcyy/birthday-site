@@ -64,9 +64,9 @@ export default function Envelope({ link }) {
           </div>
         </div>
       ) : (
-        <div className="w-[25%] bg-white flex flex-col gap-6">
-          <div className="w-full pt-5 px-6 text-lg flex flex-col gap-1">
-            <p className="font-lexend text-base">Send this link:</p>
+        <div className="w-[80%] bg-white flex flex-col gap-6">
+          <div className="w-full pt-5 px-6 text-lg flex flex-col gap-2">
+            <p className="font-lexend text-base text-start">Send this link:</p>
             <div className="w-full flex items-center bg-[#e9e9e9] rounded-sm overflow-hidden">
               <button className="px-2 py-2" onClick={copyLink}>
                 {showIcon ? (
