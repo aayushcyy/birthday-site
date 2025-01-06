@@ -48,12 +48,12 @@ export default function Home() {
   };
 
   return (
-    <div className="flex w-full h-screen">
+    <div className="flex lg:flex-row flex-col w-full h-screen items-center text-center">
       <Image
         src={gift}
         width={180}
         height={180}
-        className="absolute right-12 top-40 rotate-12 z-0"
+        className="w-[6rem] absolute right-6 top-[21rem] rotate-12 z-0"
         alt=""
       />
       <Image
@@ -67,7 +67,7 @@ export default function Home() {
         src={balloon}
         width={180}
         height={180}
-        className="absolute left-5 top-8 opacity-90 -rotate-12 z-0"
+        className="w-[6rem] absolute left-3 top-28 opacity-90 -rotate-12 z-0"
         alt=""
       />
       <Image
@@ -79,13 +79,13 @@ export default function Home() {
       />
       {!displayCard && (
         <>
-          <div className="flex relative w-[55%] pl-40 pt-12">
-            <div className="bg-[#E7B251] w-[43%] h-[130px] absolute rotate-[8deg] top-[68px] left-[170px]  skewed-div2"></div>
+          <div className="flex relative w-full pt-12 text-center flex-col items-center">
+            <div className="bg-[#E7B251] w-[65%] h-[5rem] absolute rotate-[8deg] top-[68px]  skewed-div2"></div>
 
-            <div className="bg-[#E3645A] w-[52%] absolute top-[195px] left-[130px] h-[180px] skew-y-2 -skew-x-12 transform skewed-div"></div>
+            <div className="bg-[#E3645A] w-[65%] absolute top-[10rem] h-[6rem] skew-y-2 -skew-x-12 transform skewed-div"></div>
 
-            <div className="bg-[#619FEB] w-[40%] absolute h-36 top-[350px] -rotate-[7deg] z-[5] left-[125px]"></div>
-            <p className="uppercase text-[120px] text-[#020817] w-[60%] leading-tight font-barlow font-semibold z-[6] tracking-tight">
+            <div className="bg-[#619FEB] w-[50%] absolute h-[6rem] top-[16rem] -rotate-[7deg] z-[5]"></div>
+            <p className="uppercase text-[5.1rem] text-[#020817] w-[90%] leading-tight font-barlow font-semibold z-[6] tracking-tight">
               create a<br />
               birthday
               <br />

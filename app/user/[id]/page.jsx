@@ -7,6 +7,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { gsap } from "gsap";
 import Image from "next/image";
 import Candle from "@/app/Component/Candle";
+import Graffiti from "@/app/Component/Graffiti";
+import Loader from "../../Component/Loader";
 
 export default function UserPage({ params: paramsPromise }) {
   const [params, setParams] = useState(null);
@@ -14,6 +16,7 @@ export default function UserPage({ params: paramsPromise }) {
   const [loading, setLoading] = useState(true);
   const [showCard, setShowCard] = useState(false);
   const [isExtinguished, setIsExtinguished] = useState(false);
+  const [callGraffiti, setCallGraffiti] = useState(false);
   const router = useRouter();
 
   const containerRef = useRef(null);
@@ -57,19 +60,25 @@ export default function UserPage({ params: paramsPromise }) {
   const handleClick = () => {
     const timeline = gsap.timeline();
 
+    const containerBounds = containerRef.current.getBoundingClientRect();
+    const windowWidth = window.innerWidth;
+
+    const offsetX = (windowWidth - 1100) / 2;
+
     timeline.to(frontRef.current, {
       rotationY: -180,
       transformOrigin: "left center",
       duration: 1.5,
-      ease: "power2.inOut",
+      ease: "power3.inOut",
     });
 
     timeline.to(
       containerRef.current,
       {
         width: "900px",
+        x: offsetX,
         duration: 0.5,
-        ease: "power2.inOut",
+        ease: "expo.inOut",
       },
       "<"
     );
@@ -95,13 +104,32 @@ export default function UserPage({ params: paramsPromise }) {
       source.connect(analyser);
 
       const dataArray = new Uint8Array(analyser.frequencyBinCount);
+      let extinguishTimeout = null;
       const checkSound = () => {
         analyser.getByteFrequencyData(dataArray);
-        const volume = dataArray.reduce((a, b) => a + b, 0);
-        if (volume > 5000) {
-          setIsExtinguished(true);
-          console.log("Candle extinguished!");
-        } else {
+        const rms = Math.sqrt(
+          dataArray.reduce((sum, value) => sum + value ** 2, 0) /
+            dataArray.length
+        );
+
+        console.log("RMS Volume:", rms);
+
+        if (rms > 50 && !isExtinguished) {
+          // Check if already extinguished
+          if (!extinguishTimeout) {
+            extinguishTimeout = setTimeout(() => {
+              setIsExtinguished(true);
+              console.log("Candle extinguished!");
+              setCallGraffiti(true);
+              stream.getTracks().forEach((track) => track.stop());
+            }, 300); // Debounce duration
+          }
+        } else if (rms <= 50) {
+          clearTimeout(extinguishTimeout);
+          extinguishTimeout = null;
+        }
+
+        if (!isExtinguished) {
           requestAnimationFrame(checkSound);
         }
       };
@@ -109,12 +137,12 @@ export default function UserPage({ params: paramsPromise }) {
     });
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loader />;
 
   if (!userData) return null;
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center bg-[#F1EEE0]">
+    <div className="w-full h-screen flex flex-col items-center relative justify-center bg-[#F1EEE0]">
       {showCard && (
         <div
           className="relative w-[450px] h-[500px] flex items-center justify-center cursor-pointer"
@@ -140,14 +168,21 @@ export default function UserPage({ params: paramsPromise }) {
               </p>
             </div>
           </div>
-
-          <div className="absolute w-[450px] h-[500px] bg-cover bg-[url('/carddd.jpg')] border-l-2 border-[#414141] z-5 flex items-center flex-col">
+          <div className="w-[1px] h-[95%] bg-[#9F8A6B] relative z-40 mr-[450px] shadow-[rgba(0,0,0,0.61)_-42px_0px_114px_-40px]"></div>
+          <div className="absolute w-[450px] h-[500px] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center justify-center flex-col">
             <p className="font-barlow text-[90px] leading-[1.15] font-semibold uppercase text-[#020817]">
               Blow!
             </p>
             <p className="font-barlow text-[20px] font-semibold uppercase text-[#020817]">
               (for a suprise)
             </p>
+            {callGraffiti && (
+              <div className="absolute z-40 right-[100%] h-full w-full items-center justify-center flex text-center px-5">
+                <p className=" text-xl font-normal font-geistSans transition-opacity ease-in duration-100 ">
+                  {userData.message}
+                </p>
+              </div>
+            )}
             <div className="relative">
               <Image
                 src="/cakeBlow.png"
@@ -155,12 +190,89 @@ export default function UserPage({ params: paramsPromise }) {
                 height={370}
                 alt="Picture of the author"
               />
+              <div className="absolute bottom-[54%] flex justify-center items-center bg-[#3a3fda00] w-full px-1 h-[100px]">
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-72 mb-14"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-56 mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-36 mb-0"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-44 mb-12"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-24 mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-16 mb-1 z-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-[123px] mb-[90px] "
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-[62px] mb-[95px] "
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="mr-[22px] mb-[40px] "
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[10px] -mb-2 z-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[95px] mb-24"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[140px] mb-16"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[185px] mb-[100px]"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-16 mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-7 mb-[90px]"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-28 mb-0"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[170px] mb-2"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[210px] mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[260px] mb-12"
+                />
+              </div>
             </div>
           </div>
         </div>
       )}
-      <Candle isExtinguished={isExtinguished} />
-
+      {callGraffiti && <Graffiti />}
       {!showCard && (
         <div className="w-full h-screen z-50 bg-[#f1eee06d] flex flex-col items-center justify-center relative">
           <p className="-mt-40 font-lexend mb-20">
