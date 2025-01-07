@@ -171,10 +171,10 @@ export default function UserPage({ params: paramsPromise }) {
 
   return (
     <div className="w-full h-screen flex flex-col items-center relative bg-[#F1EEE0]">
-      {/* card for larger screens */}
+      {/* card for xl(width-1024>) screens */}
       {showCard && (
         <div
-          className="relative w-[450px] h-[1000px] hidden lg:flex flex-col items-center justify-center cursor-pointer"
+          className="relative w-[450px] h-[1000px] hidden lg:hidden xl:flex flex-col items-center justify-center cursor-pointer"
           ref={containerRef}
           onClick={handleClick}
         >
@@ -198,7 +198,7 @@ export default function UserPage({ params: paramsPromise }) {
               </p>
             </div>
           </div>
-          <div className="w-[1px] h-[95%] bg-[#9F8A6B] relative z-40 mr-[450px] shadow-[rgba(0,0,0,0.61)_-42px_0px_114px_-40px]"></div>
+          <div className="w-[1px] h-[95%] relative z-40 mr-[450px]"></div>
           {/* backside */}
           <div className="absolute w-[450px] h-[500px] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center justify-center flex-col">
             <p className="font-barlow text-[90px] leading-[1.15] font-semibold uppercase text-[#020817]">
@@ -307,10 +307,10 @@ export default function UserPage({ params: paramsPromise }) {
         </div>
       )}
 
-      {/* card for mobile screens */}
+      {/* card for mobile(width-640px<) screens */}
       {showCard && (
         <div
-          className="relative w-full h-full flex lg:hidden flex-col items-center justify-center cursor-pointer"
+          className="relative w-full h-full flex sm:hidden md:hidden lg:hidden flex-col items-center justify-center cursor-pointer"
           ref={containerRefMobile}
           onClick={handleClick}
         >
@@ -430,7 +430,256 @@ export default function UserPage({ params: paramsPromise }) {
           </div>
         </div>
       )}
+
+      {/* card for Smaller(width-640px<768) screens */}
+      {showCard && (
+        <div
+          className="relative w-full h-full sm:flex hidden md:hidden lg:hidden flex-col items-center justify-center cursor-pointer"
+          ref={containerRefMobile}
+          onClick={handleClick}
+        >
+          {/* frontside */}
+          <div
+            ref={frontRefMobile}
+            className="w-[60%] h-[55vw] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
+          >
+            <div
+              ref={contentRefMobile}
+              className="w-[100%] h-[100%] flex flex-col justify-center items-center"
+            >
+              <div className="w-[65%] h-[13%] flex items-center justify-center bg-[#418ae3] card-title absolute top-[20%] left-1/2 -translate-x-1/2 z-30">
+                <p className="uppercase text-[35px] font-semibold font-barlow">
+                  happy birthday!
+                </p>
+              </div>
+              <div className="w-[100%] h-[170px] flex justify-center items-center bg-green-500 card-name text-center relative overflow-visible"></div>
+              <p className="text-[4.1rem] leading-[1] font-barlow uppercase absolute z-40 font-semibold ">
+                {userData.name}
+              </p>
+            </div>
+          </div>
+
+          {/* backside */}
+          <div className="absolute w-[60%] h-[55vw] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col overflow-hidden">
+            <p className="font-barlow text-[4.5rem] leading-[1.15] font-semibold uppercase text-[#020817]">
+              Blow!
+            </p>
+            <p className="font-barlow text-[20px] font-semibold uppercase text-[#020817]">
+              (for a suprise)
+            </p>
+            {callGraffiti && (
+              <div className="absolute z-[50] bottom-full h-full w-full items-center justify-center flex text-center px-5">
+                <p className="italic text-xl font-normal font-geistSans transition-opacity ease-in duration-100">
+                  {userData.message}
+                </p>
+              </div>
+            )}
+
+            {/* cake container */}
+            <div className="relative w-full -mt-2 flex justify-center">
+              {/* cake */}
+              <Image
+                src="/cakeBlow.png"
+                width={370}
+                height={370}
+                alt="Picture of the author"
+                className="w-[100%] h-[86%]"
+              />
+
+              {/* candles */}
+              <div className="absolute bottom-[65%] flex items-center rounded-b-[80%] rounded-t-[80%] w-[87%] px-1 h-[20%]">
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[80%] mb-8"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[4%] mb-8 z-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[11%] mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[18%] mb-1"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[31%] mb-6"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[25%] mb-3 z-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[37%] -mb-2"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[44%] mb-0"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[55%] mb-7"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[50%] -mb-3"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[68%] mb-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[62%] -mb-2"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[75%] mb-1"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[85%] mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[92%] mb-9"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* card for Tablets(Medium Screens, width-768<) */}
+      {showCard && (
+        <div
+          className="relative w-full h-full hidden sm:hidden lg:hidden xl:hidden 2xl:hidden md:flex flex-col items-center justify-center cursor-pointer"
+          ref={containerRefMobile}
+          onClick={handleClick}
+        >
+          {/* frontside */}
+          <div
+            ref={frontRefMobile}
+            className="w-[55%] h-[55vw] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
+          >
+            <div
+              ref={contentRefMobile}
+              className="w-[100%] h-[100%] flex flex-col justify-center items-center"
+            >
+              <div className="w-[53%] h-[10%] flex items-center justify-center bg-[#418ae3] card-title absolute top-[25%] left-1/2 -translate-x-1/2 z-30">
+                <p className="uppercase text-[4vw] font-semibold font-barlow">
+                  happy birthday!
+                </p>
+              </div>
+              <div className="w-[100%] h-[25%] flex justify-center items-center bg-green-500 card-name text-center"></div>
+              <p className="text-[8vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
+                {userData.name}
+              </p>
+            </div>
+          </div>
+          {/* backside */}
+          <div className="absolute w-[55%] h-[55vw] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">
+            <p className="pt-10 font-barlow text-[7vw] leading-[1.15] font-semibold uppercase text-[#020817]">
+              Blow!
+            </p>
+            <p className="font-barlow text-[2vw] font-semibold uppercase text-[#020817]">
+              (for a suprise)
+            </p>
+            {callGraffiti && (
+              <div className="absolute z-[60] bottom-full h-full w-full items-center justify-center flex text-center px-5">
+                <p className="italic text-xl font-normal font-geistSans transition-opacity ease-in duration-100">
+                  {userData.message}
+                </p>
+              </div>
+            )}
+
+            {/* cake container */}
+            <div className="relative w-full -mt-2 flex justify-center">
+              {/* cake */}
+              <Image
+                src="/cakeBlow.png"
+                width={370}
+                height={370}
+                alt="Picture of the author"
+                className="w-[90%] h-[86%]"
+              />
+
+              {/* candles */}
+              <div className="absolute bottom-[65%] flex items-center rounded-b-[80%] rounded-t-[80%] w-[80%] px-1 h-[20%]">
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[80%] mb-8"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[4%] mb-8 z-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[11%] mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[18%] mb-1"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[31%] mb-6"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[25%] mb-3 z-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[37%] -mb-2"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[44%] mb-0"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[55%] mb-7"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[50%] -mb-3"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[68%] mb-10"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[62%] -mb-2"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[75%] mb-1"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[85%] mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[92%] mb-9"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Graffiti */}
       {callGraffiti && <Graffiti />}
+
+      {/* mic allow permission dialouge */}
       {!showCard && (
         <div className="w-full h-screen z-50 bg-[#f1eee06d] flex flex-col items-center justify-center relative gap-10">
           <button
@@ -444,7 +693,7 @@ export default function UserPage({ params: paramsPromise }) {
           </p>
         </div>
       )}
-      <div className="absolute -bottom-48 text-center h-10 w-full font-lexend text-xs ">
+      <div className="absolute lg:bottom-0 md:bottom-0 -bottom-48 text-center h-10 w-full font-lexend text-xs">
         Made with 💗 by Aayush
       </div>
     </div>
