@@ -143,7 +143,10 @@ export default function UserPage({ params: paramsPromise }) {
             dataArray.length
         );
 
-        if (rms > 60 && !isExtinguished) {
+        console.log("RMS Volume:", rms);
+
+        if (rms > 50 && !isExtinguished) {
+          // Check if already extinguished
           if (!extinguishTimeout) {
             extinguishTimeout = setTimeout(() => {
               setIsExtinguished(true);
@@ -152,7 +155,7 @@ export default function UserPage({ params: paramsPromise }) {
               stream.getTracks().forEach((track) => track.stop());
             }, 300); // Debounce duration
           }
-        } else if (rms <= 60) {
+        } else if (rms <= 50) {
           clearTimeout(extinguishTimeout);
           extinguishTimeout = null;
         }
@@ -170,7 +173,7 @@ export default function UserPage({ params: paramsPromise }) {
   if (!userData) return <p>No data has been fetched</p>;
 
   return (
-    <div className="w-full h-screen flex flex-col items-center relative bg-[#F1EEE0]">
+    <div className="w-full h-screen flex flex-col items-center relative justify-center bg-[#F1EEE0]">
       {/* card for larger screens */}
       {showCard && (
         <div
@@ -310,7 +313,7 @@ export default function UserPage({ params: paramsPromise }) {
       {/* card for mobile screens */}
       {showCard && (
         <div
-          className="relative w-full h-full flex lg:hidden flex-col items-center justify-center cursor-pointer"
+          className="relative w-[410px] h-full flex lg:hidden flex-col items-center justify-center cursor-pointer"
           ref={containerRefMobile}
           onClick={handleClick}
         >
@@ -321,15 +324,15 @@ export default function UserPage({ params: paramsPromise }) {
           >
             <div
               ref={contentRefMobile}
-              className="w-[100%] h-[100%] flex flex-col justify-center items-center"
+              className="w-[300px] h-[100%] flex flex-col justify-center items-center"
             >
-              <div className="w-[90%] h-[13%] flex items-center justify-center bg-[#418ae3] card-title absolute top-20 left-1/2 -translate-x-1/2 z-30">
-                <p className="uppercase text-[35px] font-semibold font-barlow">
+              <div className="w-[300px] h-[45px] flex items-center justify-center bg-[#418ae3] card-title absolute top-20 left-1/2 -translate-x-1/2 z-30">
+                <p className="uppercase text-[37px] font-semibold font-barlow">
                   happy birthday!
                 </p>
               </div>
               <div className="w-[410px] h-[170px] flex justify-center items-center bg-green-500 card-name text-center relative overflow-visible"></div>
-              <p className="text-[4.1rem] leading-[1] font-barlow uppercase absolute z-40 font-semibold ">
+              <p className="text-7xl font-barlow uppercase absolute z-40 font-semibold ">
                 {userData.name}
               </p>
             </div>
@@ -337,7 +340,7 @@ export default function UserPage({ params: paramsPromise }) {
           <div className="w-[1px] h-[95%] bg-[#9F8A6B] relative z-40 mr-[410px] shadow-[rgba(0,0,0,0.61)_-42px_0px_114px_-40px]"></div>
 
           {/* backside */}
-          <div className="absolute w-[90%] h-[46%] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col overflow-hidden">
+          <div className="absolute w-[90%] h-[46%] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">
             <p className="font-barlow text-[4.5rem] leading-[1.15] font-semibold uppercase text-[#020817]">
               Blow!
             </p>
@@ -353,77 +356,93 @@ export default function UserPage({ params: paramsPromise }) {
             )}
 
             {/* cake container */}
-            <div className="relative w-full -mt-2 flex justify-center">
+            <div className="relative w-full flex justify-center">
               {/* cake */}
               <Image
                 src="/cakeBlow.png"
                 width={370}
                 height={370}
                 alt="Picture of the author"
-                className="w-[100%] h-[86%]"
+                className="w-[90%]"
               />
 
               {/* candles */}
-              <div className="absolute bottom-[65%] flex items-center rounded-b-[80%] rounded-t-[80%] w-[87%] px-1 h-[20%]">
+              <div className="absolute bottom-[54%] flex justify-center items-center bg-[#3a3fda00] w-[78%] px-1 h-[100px]">
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[80%] mb-8"
+                  className="mr-72 mb-14"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[4%] mb-8 z-10"
+                  className="mr-56 mb-5"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[11%] mb-5"
+                  className="mr-36 mb-0"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[18%] mb-1"
+                  className="mr-44 mb-12"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[31%] mb-6"
+                  className="mr-24 mb-5"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[25%] mb-3 z-10"
+                  className="mr-16 mb-1 z-10"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[37%] -mb-2"
+                  className="mr-[123px] mb-[90px] "
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[44%] mb-0"
+                  className="mr-[62px] mb-[95px] "
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[55%] mb-7"
+                  className="mr-[22px] mb-[40px] "
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[50%] -mb-3"
+                  className="ml-[10px] -mb-2 z-10"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[68%] mb-10"
+                  className="ml-[95px] mb-24"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[62%] -mb-2"
+                  className="ml-[140px] mb-16"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[75%] mb-1"
+                  className="ml-[185px] mb-[100px]"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[85%] mb-5"
+                  className="ml-16 mb-5"
                 />
                 <Candle
                   isExtinguished={isExtinguished}
-                  className="ml-[92%] mb-9"
+                  className="ml-7 mb-[90px]"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-28 mb-0"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[170px] mb-2"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[210px] mb-5"
+                />
+                <Candle
+                  isExtinguished={isExtinguished}
+                  className="ml-[260px] mb-12"
                 />
               </div>
             </div>
