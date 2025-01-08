@@ -4,7 +4,7 @@ const Candle = ({ isExtinguished, className }) => {
   return (
     <div className={`flex absolute flex-col items-center ${className}`}>
       <motion.div
-        className="w-[10px] h-[20px] bg-[#F8A210] rounded-[50%] -mb-2 relative"
+        className="md:w-[10px] w-[3px] md:h-[20px] h-[10px] bg-[#F8A210] rounded-[100%] md:-mb-2 -mb-[6px] relative"
         animate={
           isExtinguished
             ? { opacity: 0 } // Flame extinguished
@@ -24,11 +24,11 @@ const Candle = ({ isExtinguished, className }) => {
           ease: "easeInOut",
         }}
       >
-        <div className="w-[6px] h-[10px] bg-[#f89710] rounded-[50%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "></div>
+        <div className="md:w-[6px] md:h-[10px] w-[5px] h-[8px] bg-[#f89710] rounded-t-[50%] rounded-b-[40%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "></div>
       </motion.div>
 
-      <div className="w-[2px] h-2 bg-[#8b7b7b]"></div>
-      <div className="w-[10px] h-[35px] border-[1px] border-[#9187878b] bg-[#5FEDB5] rounded-t-[10px] mb-[10px]"></div>
+      <div className="w-[1px] h-[4px] bg-[#8b7b7b]"></div>
+      <div className="md:w-[10px] w-[6px] md:h-[35px] h-[20px] border-[1px] border-[#9187878b] bg-[#5FEDB5] rounded-t-[10px] mb-[10px]"></div>
     </div>
   );
 };

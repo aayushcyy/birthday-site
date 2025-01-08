@@ -3,7 +3,8 @@ import Candle from "./Candle";
 import Image from "next/image";
 import gsap from "gsap";
 
-export default function Card4Tablet({
+//xl screen bole toh 14inch Laptops
+export default function CardLgScreens({
   name,
   message,
   isExtinguished,
@@ -18,9 +19,8 @@ export default function Card4Tablet({
 
     const containerBounds = containerRef.current.getBoundingClientRect();
     const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
 
-    const offsetX = (windowWidth - 1100) / 2;
+    const offsetX = windowWidth - 1150;
 
     //animation for larger screens
     tl.to(frontRef.current, {
@@ -52,32 +52,32 @@ export default function Card4Tablet({
 
   return (
     <div
-      className="relative w-full h-full hidden sm:hidden lg:hidden xl:hidden 2xl:hidden md:flex flex-col items-center justify-center cursor-pointer"
+      className="relative w-full h-full hidden sm:hidden lg:flex xl:hidden 2xl:hidden md:hidden flex-col items-center justify-center cursor-pointer"
       ref={containerRef}
       onClick={handleClick}
     >
       {/* frontside */}
       <div
         ref={frontRef}
-        className="w-[40vw] h-[40vw] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
+        className="w-[35%] h-[56.9%] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
       >
         <div
           ref={contentRef}
           className="w-[100%] h-[100%] flex flex-col justify-center items-center"
         >
-          <div className="w-[65%] h-[10%] flex items-center justify-center bg-[#418ae3] card-title absolute top-[20%] left-1/2 -translate-x-1/2 z-30">
-            <p className="uppercase text-[3.5vw] font-semibold font-barlow">
+          <div className="w-[70%] h-[10%] flex items-center justify-center bg-[#418ae3] card-title absolute top-[20%] left-1/2 -translate-x-1/2 z-30">
+            <p className="uppercase text-[3vw] font-semibold font-barlow">
               happy birthday!
             </p>
           </div>
-          <div className="w-[100%] h-[35%] flex justify-center items-center bg-green-500 card-name text-center"></div>
-          <p className="text-[8vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
+          <div className="w-[100%] h-[30%] flex justify-center items-center bg-green-500 card-name text-center"></div>
+          <p className="text-[7vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
             {name}
           </p>
         </div>
       </div>
       {/* backside */}
-      <div className="absolute w-[40vw] h-[40vw] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">
+      <div className="absolute w-[35%] h-[56.95%] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">
         <p className="pt-3 font-barlow text-[7vw] leading-[1.15] font-semibold uppercase text-[#020817]">
           Blow!
         </p>
@@ -86,7 +86,7 @@ export default function Card4Tablet({
         </p>
         {callGraffiti && (
           <div className="absolute z-[60] right-full h-full w-full items-center justify-center flex text-center px-5">
-            <p className="italic text-base font-normal font-geistSans transition-opacity ease-in duration-100">
+            <p className="italic text-lg font-normal font-geistSans transition-opacity ease-in duration-100">
               {message}
             </p>
           </div>

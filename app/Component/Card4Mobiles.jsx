@@ -3,44 +3,43 @@ import Candle from "./Candle";
 import Image from "next/image";
 import gsap from "gsap";
 
-export default function Card4Tablet({
+export default function Card4Mobiles({
   name,
   message,
   isExtinguished,
   callGraffiti,
 }) {
-  const containerRef = useRef(null);
-  const frontRef = useRef(null);
-  const contentRef = useRef(null);
+  const containerRefMobile = useRef(null);
+  const frontRefMobile = useRef(null);
+  const contentRefMobile = useRef(null);
 
   const handleClick = () => {
     const tl = gsap.timeline();
 
-    const containerBounds = containerRef.current.getBoundingClientRect();
-    const windowWidth = window.innerWidth;
+    const containerBounds = containerRefMobile.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    const offsetX = (windowWidth - 1100) / 2;
+    const offsetY = windowHeight / 5;
 
     //animation for larger screens
-    tl.to(frontRef.current, {
-      rotationY: -180,
-      transformOrigin: "left center",
+    tl.to(frontRefMobile.current, {
+      rotationX: -180,
+      transformOrigin: "top center",
       duration: 1.5,
       ease: "power3.inOut",
     });
     tl.to(
-      containerRef.current,
+      containerRefMobile.current,
       {
-        width: "900px",
-        x: -offsetX,
+        height: "100vh",
+        y: offsetY,
         duration: 0.5,
         ease: "expo.inOut",
       },
       "<"
     );
     tl.to(
-      contentRef.current,
+      contentRefMobile.current,
       {
         opacity: 0,
         duration: 0.5,
@@ -52,41 +51,42 @@ export default function Card4Tablet({
 
   return (
     <div
-      className="relative w-full h-full hidden sm:hidden lg:hidden xl:hidden 2xl:hidden md:flex flex-col items-center justify-center cursor-pointer"
-      ref={containerRef}
+      className="relative w-full h-full flex sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden flex-col items-center justify-center cursor-pointer"
+      ref={containerRefMobile}
       onClick={handleClick}
     >
       {/* frontside */}
       <div
-        ref={frontRef}
-        className="w-[40vw] h-[40vw] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
+        ref={frontRefMobile}
+        className="w-[70vw] h-[70vw] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
       >
         <div
-          ref={contentRef}
+          ref={contentRefMobile}
           className="w-[100%] h-[100%] flex flex-col justify-center items-center"
         >
-          <div className="w-[65%] h-[10%] flex items-center justify-center bg-[#418ae3] card-title absolute top-[20%] left-1/2 -translate-x-1/2 z-30">
-            <p className="uppercase text-[3.5vw] font-semibold font-barlow">
+          <div className="w-[60%] h-[10%] flex items-center justify-center bg-[#418ae3] card-title absolute top-10 left-1/2 -translate-x-1/2 z-30">
+            <p className="uppercase text-[5vw] font-semibold font-barlow">
               happy birthday!
             </p>
           </div>
-          <div className="w-[100%] h-[35%] flex justify-center items-center bg-green-500 card-name text-center"></div>
-          <p className="text-[8vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
+          <div className="w-[100%] h-[38%] flex justify-center items-center bg-green-500 card-name text-center relative overflow-visible"></div>
+          <p className="text-[14vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
             {name}
           </p>
         </div>
       </div>
+
       {/* backside */}
-      <div className="absolute w-[40vw] h-[40vw] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">
-        <p className="pt-3 font-barlow text-[7vw] leading-[1.15] font-semibold uppercase text-[#020817]">
+      <div className="absolute w-[70vw] h-[70vw] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">
+        <p className="font-barlow text-[15vw] leading-[1.15] font-semibold uppercase text-[#020817]">
           Blow!
         </p>
-        <p className="font-barlow text-[2vw] font-semibold uppercase text-[#020817]">
+        <p className="font-barlow text-[4vw] font-semibold uppercase text-[#020817]">
           (for a suprise)
         </p>
         {callGraffiti && (
-          <div className="absolute z-[60] right-full h-full w-full items-center justify-center flex text-center px-5">
-            <p className="italic text-base font-normal font-geistSans transition-opacity ease-in duration-100">
+          <div className="absolute z-[50] bg-purple-500 bottom-full h-full w-full items-center justify-center flex text-center px-5">
+            <p className="italic text-[.6rem] font-normal font-geistSans transition-opacity ease-in duration-100">
               {message}
             </p>
           </div>
@@ -100,15 +100,15 @@ export default function Card4Tablet({
             width={370}
             height={370}
             alt="Picture of the author"
-            className="w-[90%] h-[86%]"
+            className="w-[100%] h-[80%]"
           />
 
           {/* candles */}
-          <div className="absolute bottom-[65%] flex items-center rounded-b-[80%] rounded-t-[80%] w-[80%] px-1 h-[20%]">
-            <Candle isExtinguished={isExtinguished} className="ml-[80%] mb-8" />
+          <div className="absolute bottom-[65.1%] flex items-center rounded-b-[80%] rounded-t-[80%] w-[87%] px-1 h-[20%]">
+            <Candle isExtinguished={isExtinguished} className="ml-[80%] mb-6" />
             <Candle
               isExtinguished={isExtinguished}
-              className="ml-[4%] mb-8 z-10"
+              className="ml-[4%] mb-4 z-10"
             />
             <Candle isExtinguished={isExtinguished} className="ml-[11%] mb-5" />
             <Candle isExtinguished={isExtinguished} className="ml-[18%] mb-1" />
@@ -127,17 +127,14 @@ export default function Card4Tablet({
               isExtinguished={isExtinguished}
               className="ml-[50%] -mb-3"
             />
-            <Candle
-              isExtinguished={isExtinguished}
-              className="ml-[68%] mb-10"
-            />
+            <Candle isExtinguished={isExtinguished} className="ml-[68%] mb-8" />
             <Candle
               isExtinguished={isExtinguished}
               className="ml-[62%] -mb-2"
             />
             <Candle isExtinguished={isExtinguished} className="ml-[75%] mb-1" />
-            <Candle isExtinguished={isExtinguished} className="ml-[85%] mb-5" />
-            <Candle isExtinguished={isExtinguished} className="ml-[92%] mb-9" />
+            <Candle isExtinguished={isExtinguished} className="ml-[85%] mb-4" />
+            <Candle isExtinguished={isExtinguished} className="ml-[92%] mb-5" />
           </div>
         </div>
       </div>
