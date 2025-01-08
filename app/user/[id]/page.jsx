@@ -323,18 +323,17 @@ export default function UserPage({ params: paramsPromise }) {
               ref={contentRefMobile}
               className="w-[100%] h-[100%] flex flex-col justify-center items-center"
             >
-              <div className="w-[90%] h-[13%] flex items-center justify-center bg-[#418ae3] card-title absolute top-20 left-1/2 -translate-x-1/2 z-30">
-                <p className="uppercase text-[35px] font-semibold font-barlow">
+              <div className="w-[60%] h-[13%] flex items-center justify-center bg-[#418ae3] card-title absolute top-20 left-1/2 -translate-x-1/2 z-30">
+                <p className="uppercase text-[7vw] font-semibold font-barlow">
                   happy birthday!
                 </p>
               </div>
-              <div className="w-[410px] h-[170px] flex justify-center items-center bg-green-500 card-name text-center relative overflow-visible"></div>
-              <p className="text-[4.1rem] leading-[1] font-barlow uppercase absolute z-40 font-semibold ">
+              <div className="w-[100%] h-[170px] flex justify-center items-center bg-green-500 card-name text-center relative overflow-visible"></div>
+              <p className="text-[14vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
                 {userData.name}
               </p>
             </div>
           </div>
-          <div className="w-[1px] h-[95%] bg-[#9F8A6B] relative z-40 mr-[410px] shadow-[rgba(0,0,0,0.61)_-42px_0px_114px_-40px]"></div>
 
           {/* backside */}
           <div className="absolute w-[90%] h-[46%] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col overflow-hidden">
@@ -441,7 +440,7 @@ export default function UserPage({ params: paramsPromise }) {
           {/* frontside */}
           <div
             ref={frontRefMobile}
-            className="w-[60%] h-[55vw] bg-cover bg-[url('/carddd.jpg')] overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
+            className="w-[60%] h-[55vw] bg-cover bg-purple-500 overflow-hidden text-center flex items-center justify-center absolute z-[15] will-change-transform card"
           >
             <div
               ref={contentRefMobile}
