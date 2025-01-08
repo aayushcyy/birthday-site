@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import Candle from "./Candle";
 import Image from "next/image";
