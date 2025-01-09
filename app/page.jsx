@@ -58,14 +58,14 @@ export default function Home() {
         src={gift}
         width={180}
         height={180}
-        className="w-[6rem] xl:w-[9rem] absolute right-4 top-[22rem] xl:top-[80%]  rotate-12 z-0"
+        className="w-[6rem] xl:w-[9rem] absolute right-4 xl:right-10 top-[22rem] xl:top-[10%]  rotate-12 z-0"
         alt=""
       />
       <Image
         src={cake2}
         width={180}
         height={180}
-        className="w-[8rem] absolute left-7 hidden bottom-0 rotate-12 z-0"
+        className="w-[9rem] absolute left-40 hidden xl:block bottom-8 rotate-12 z-0"
         alt=""
       />
       <Image
@@ -79,25 +79,25 @@ export default function Home() {
         src={animal2}
         width={180}
         height={180}
-        className="absolute right-5 bottom-1 hidden opacity-90 -rotate-12 z-0"
+        className="absolute right-16 bottom-1 hidden xl:block opacity-90 -rotate-12 z-0"
         alt=""
       />
       {!displayCard && (
-        <div className="flex flex-col w-full sm:flex-row items-center sm:justify-between xl:justify-center gap-28 xl:gap-32 sm:gap-0 min-h-screen pb-0">
-          <div className="flex relative w-full sm:w-[42%] sm:h-full pt-12 sm:pt-0 text-center flex-col items-center">
-            <div className="bg-[#E7B251] w-[65%] sm:w-[80%] xl:w-[82%] h-[5rem] sm:h-[6rem] xl:h-[11rem] absolute rotate-[8deg] top-[20%] sm:top-[4%]  skewed-div2"></div>
+        <div className="flex flex-col w-full sm:flex-row items-center xl:items-start xl:pt-5 sm:justify-between xl:justify-center xl:h-[100vh] gap-28 xl:gap-32 sm:gap-0 min-h-screen  pb-0">
+          <div className="flex relative w-full sm:w-[42%] sm:h-full pt-12 sm:pt-0 text-center flex-col items-center xl:top-14 xl:left-5">
+            <div className="bg-[#E7B251] w-[65%] sm:w-[80%] h-[5rem] sm:h-[6rem] absolute rotate-[8deg] top-[20%] sm:top-[4%]  skewed-div2 xl:left-10 xl:w-[60%] xl:h-[9rem] xl:top-3"></div>
 
-            <div className="bg-[#E3645A] w-[67%] sm:w-[80%] xl:w-[90%] absolute top-[45%] sm:top-[35%] xl:top-[36%] h-[6rem] sm:h-[7rem] xl:h-[12rem] skew-y-2 -skew-x-12 transform skewed-div"></div>
+            <div className="bg-[#E3645A] w-[67%] sm:w-[80%] xl:w-[70%] xl:h-[9rem] xl:top-[23%] xl:left-5 absolute top-[45%] sm:top-[35%] h-[6rem] sm:h-[7rem] skew-y-2 -skew-x-12 transform skewed-div"></div>
 
-            <div className="bg-[#619FEB] w-[50%] sm:w-[60%] absolute h-[5rem] sm:h-[6rem] xl:h-[11rem] top-[74%] sm:top-[69%] -rotate-[7deg] z-[5]"></div>
-            <p className="uppercase text-[23vw] sm:text-[12vw] text-[#020817] w-[90%] xl:leading-[1.1] leading-tight font-barlow font-semibold z-[6] tracking-tight">
+            <div className="bg-[#619FEB] w-[50%] sm:w-[60%] absolute h-[5rem] sm:h-[6rem] xl:h-[9rem] xl:left-5 xl:top-[43%] xl:w-[45%] top-[74%] sm:top-[69%] -rotate-[7deg] z-[5]"></div>
+            <p className="uppercase text-[23vw] sm:text-[12vw] xl:text-[8.5vw] xl:text-left text-[#020817] w-[90%] xl:leading-[1.1] leading-tight font-barlow font-semibold z-[6] tracking-tight">
               create a<br />
               birthday
               <br />
               card!
             </p>
           </div>
-          <div className="w-[85%] sm:w-[40%] xl:w-[33%] bg-white shadow-lg h-fit px-[1rem] pt-7 md:pb-4 flex flex-col gap-4 font-lexend mt-[rem] z-10 mb-10 sm:mb-0 sm:mr-10">
+          <div className="w-[85%] sm:w-[40%] xl:w-[27%] xl:mt-16 bg-white shadow-lg h-fit px-[1rem] pt-7 md:pb-4 flex flex-col gap-4 font-lexend mt-[rem] z-10 mb-10 sm:mb-0 sm:mr-10">
             <p className="font-lexend font-normal md:text-sm sm:text-xs text-xs">
               Enter the birthday person's name, age, and a custom message that
               will appear after they blow out their candles.
@@ -196,7 +196,7 @@ export default function Home() {
         </div>
       )}
       {displayCard && <Envelope link={generatedLink} />}
-      <div className="h-5 w-full font-lexend text-[10px] md:text-xs">
+      <div className="h-5 w-full xl:absolute xl:bottom-1 font-lexend text-[10px] md:text-xs">
         Made with 💗 by Aayush
       </div>
     </div>
