@@ -164,7 +164,7 @@ export default function UserPage({ params: paramsPromise }) {
         <p className="text-[10px]">
           Create you own{" "}
           <Link
-            href={"https://bday-card-chi.vercel.app/"}
+            href={"https://bdaycard-delta.vercel.app/"}
             className="text-purple-700 italic"
           >
             Click
