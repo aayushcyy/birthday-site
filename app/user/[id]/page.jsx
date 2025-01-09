@@ -11,6 +11,12 @@ import CardXLScreens from "@/app/Component/CardXLScreens";
 import CardLgScreens from "@/app/Component/CardLgScreens";
 import Card4Mobiles from "@/app/Component/Card4Mobiles";
 
+export const metadata = {
+  title: "Bday Card | Create and Share Customize Birthday Cards for Free!",
+  description:
+    "A Free customized birthday card creator | Surprise your loved ones on their birthday.",
+};
+
 export default function UserPage({ params: paramsPromise }) {
   const [params, setParams] = useState(null);
   const [userData, setUserData] = useState(null);
