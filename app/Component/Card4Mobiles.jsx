@@ -87,7 +87,7 @@ export default function Card4Mobiles({
           (for a suprise)
         </p>
         {callGraffiti && (
-          <div className="absolute z-[50] bg-purple-500 bottom-full h-full w-full items-center justify-center flex text-center px-5">
+          <div className="absolute z-[50] bottom-full h-full w-full items-center justify-center flex text-center px-5">
             <p className="italic text-[.6rem] font-normal font-geistSans transition-opacity ease-in duration-100">
               {message}
             </p>

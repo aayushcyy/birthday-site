@@ -64,7 +64,7 @@ export default function Envelope({ link }) {
           </div>
         </div>
       ) : (
-        <div className="w-[80%] bg-white flex flex-col gap-6">
+        <div className="w-[80%] xl:w-[23%] bg-white flex flex-col gap-6">
           <div className="w-full pt-5 px-6 text-lg flex flex-col gap-2">
             <p className="font-lexend text-base text-start">Send this link:</p>
             <div className="w-full flex items-center bg-[#e9e9e9] rounded-sm overflow-hidden">
