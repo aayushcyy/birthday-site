@@ -76,10 +76,10 @@ export default function CardLgScreens({
           <p className="text-[7vw] leading-[1] font-barlow uppercase absolute z-40 font-semibold w-[90%]">
             {name}
           </p>
+          <p className="text-[8px] font-lexend italic text-blue-600 z-50 absolute bottom-4 right-5">
+            Click here
+          </p>
         </div>
-        <p className="text-[8px] font-lexend italic text-blue-600 z-50 absolute bottom-4 right-5">
-          Click here
-        </p>
       </div>
       {/* backside */}
       <div className="absolute w-[35%] h-[56.95%] bg-cover bg-[url('/carddd.jpg')] z-5 flex items-center flex-col">

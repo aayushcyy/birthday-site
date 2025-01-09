@@ -76,10 +76,10 @@ export default function CardXLScreens({
           <p className="text-7xl font-barlow uppercase absolute z-40 font-semibold ">
             {name}
           </p>
+          <p className="text-[10px] font-lexend italic text-blue-600 z-50 absolute bottom-5 right-5">
+            Click here
+          </p>
         </div>
-        <p className="text-[10px] font-lexend italic text-blue-600 z-50 absolute bottom-5 right-5">
-          Click here
-        </p>
       </div>
       <div className="w-[1px] h-[95%] relative z-40 mr-[450px]"></div>
       {/* backside */}
