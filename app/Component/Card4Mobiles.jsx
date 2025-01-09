@@ -76,6 +76,9 @@ export default function Card4Mobiles({
             {name}
           </p>
         </div>
+        <p className="text-[7px] font-lexend italic text-blue-600 z-50 absolute bottom-4 right-5">
+          Click here
+        </p>
       </div>
 
       {/* backside */}

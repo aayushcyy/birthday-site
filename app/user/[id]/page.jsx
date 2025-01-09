@@ -100,66 +100,68 @@ export default function UserPage({ params: paramsPromise }) {
   if (!userData) return <p>No data has been fetched</p>;
 
   return (
-    <div className="w-full h-screen flex flex-col items-center relative bg-[#F1EEE0]">
-      {/* card for xl(width-1024>) screens ✅ */}
-      {showCard && (
-        <CardXLScreens
-          name={userData.name}
-          message={userData.message}
-          isExtinguished={isExtinguished}
-          callGraffiti={callGraffiti}
-        />
-      )}
+    <>
+      <div className="w-full h-screen flex flex-col items-center relative bg-[#F1EEE0]">
+        {/* card for xl(width-1024>) screens ✅ */}
+        {showCard && (
+          <CardXLScreens
+            name={userData.name}
+            message={userData.message}
+            isExtinguished={isExtinguished}
+            callGraffiti={callGraffiti}
+          />
+        )}
 
-      {/* card for Laptops(14inch) ✅ */}
-      {showCard && (
-        <CardLgScreens
-          name={userData.name}
-          message={userData.message}
-          isExtinguished={isExtinguished}
-          callGraffiti={callGraffiti}
-        />
-      )}
+        {/* card for Laptops(14inch) ✅ */}
+        {showCard && (
+          <CardLgScreens
+            name={userData.name}
+            message={userData.message}
+            isExtinguished={isExtinguished}
+            callGraffiti={callGraffiti}
+          />
+        )}
 
-      {/* card for mobile(width-640px<) screens ✅ */}
-      {showCard && (
-        <Card4Mobiles
-          name={userData.name}
-          message={userData.message}
-          isExtinguished={isExtinguished}
-          callGraffiti={callGraffiti}
-        />
-      )}
+        {/* card for mobile(width-640px<) screens ✅ */}
+        {showCard && (
+          <Card4Mobiles
+            name={userData.name}
+            message={userData.message}
+            isExtinguished={isExtinguished}
+            callGraffiti={callGraffiti}
+          />
+        )}
 
-      {/* card for Tablets(Medium Screens, width-768<) ✅ */}
-      {showCard && (
-        <Card4Tablet
-          name={userData.name}
-          message={userData.message}
-          isExtinguished={isExtinguished}
-          callGraffiti={callGraffiti}
-        />
-      )}
+        {/* card for Tablets(Medium Screens, width-768<) ✅ */}
+        {showCard && (
+          <Card4Tablet
+            name={userData.name}
+            message={userData.message}
+            isExtinguished={isExtinguished}
+            callGraffiti={callGraffiti}
+          />
+        )}
 
-      {/* Graffiti */}
-      {callGraffiti && <Graffiti />}
+        {/* Graffiti */}
+        {callGraffiti && <Graffiti />}
 
-      {/* mic allow permission dialouge */}
-      {!showCard && (
-        <div className="w-full md:h-full h-[90vh] z-50 bg-[#f1eee06d] flex flex-col items-center justify-center relative md:gap-10 gap-8">
-          <button
-            onClick={handleBlowCandle}
-            className="mt-6 md:px-4 md:py-2 px-2 py-2 text-xs bg-blue-500 text-white rounded font-semibold"
-          >
-            Allow Microphone!
-          </button>
-          <p className="font-lexend md:text-lg text-xs mb-20">
-            First allow the mic to move further
-          </p>
-        </div>
-      )}
-      <div className="absolute flex flex-col gap-2 pb-2 lg:bottom-0 md:bottom-0 -bottom-32 text-center h-5 w-full font-lexend text-[.5rem] lg:text-[.7rem]">
-        <p>
+        {/* mic allow permission dialouge */}
+        {!showCard && (
+          <div className="w-full md:h-full h-[90vh] z-50 bg-[#f1eee06d] flex flex-col items-center justify-center relative md:gap-10 gap-8">
+            <button
+              onClick={handleBlowCandle}
+              className="mt-6 md:px-4 md:py-2 px-2 py-2 text-xs bg-blue-500 text-white rounded font-semibold"
+            >
+              Allow Microphone!
+            </button>
+            <p className="font-lexend md:text-lg text-xs mb-20">
+              First allow the mic to move further
+            </p>
+          </div>
+        )}
+      </div>
+      <div className="absolute flex flex-col gap-1 pb-1 lg:bottom-0 md:bottom-0 -bottom-32 text-center h-14 justify-end w-full font-lexend text-[.5rem] lg:text-[.7rem]">
+        <p className="text-[10px]">
           Create you own{" "}
           <Link
             href={"https://bday-card-chi.vercel.app/"}
@@ -168,8 +170,8 @@ export default function UserPage({ params: paramsPromise }) {
             Click
           </Link>
         </p>
-        <p>Made with 💗 by Aayush</p>
+        <p className="text-[10px]">Made with 💗 by Aayush</p>
       </div>
-    </div>
+    </>
   );
 }
