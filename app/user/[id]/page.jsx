@@ -161,7 +161,10 @@ export default function UserPage({ params: paramsPromise }) {
       <div className="absolute flex flex-col gap-2 pb-2 lg:bottom-0 md:bottom-0 -bottom-32 text-center h-5 w-full font-lexend text-[.5rem] lg:text-[.7rem]">
         <p>
           Create you own{" "}
-          <Link href={"/"} className="text-purple-700 italic">
+          <Link
+            href={"https://bday-card-chi.vercel.app/"}
+            className="text-purple-700 italic"
+          >
             Click
           </Link>
         </p>
