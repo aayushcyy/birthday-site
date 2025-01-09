@@ -10,12 +10,7 @@ import Card4Tablet from "@/app/Component/Card4Tablet";
 import CardXLScreens from "@/app/Component/CardXLScreens";
 import CardLgScreens from "@/app/Component/CardLgScreens";
 import Card4Mobiles from "@/app/Component/Card4Mobiles";
-
-export const metadata = {
-  title: "Bday Card | Create and Share Customize Birthday Cards for Free!",
-  description:
-    "A Free customized birthday card creator | Surprise your loved ones on their birthday.",
-};
+import Link from "next/link";
 
 export default function UserPage({ params: paramsPromise }) {
   const [params, setParams] = useState(null);
@@ -163,8 +158,14 @@ export default function UserPage({ params: paramsPromise }) {
           </p>
         </div>
       )}
-      <div className="absolute lg:bottom-0 md:bottom-0 -bottom-32 text-center h-5 w-full font-lexend text-[.5rem] lg:text-[.7rem]">
-        Made with 💗 by Aayush
+      <div className="absolute flex flex-col gap-2 pb-2 lg:bottom-0 md:bottom-0 -bottom-32 text-center h-5 w-full font-lexend text-[.5rem] lg:text-[.7rem]">
+        <p>
+          Create you own{" "}
+          <Link href={"/"} className="text-purple-700 italic">
+            Click
+          </Link>
+        </p>
+        <p>Made with 💗 by Aayush</p>
       </div>
     </div>
   );
