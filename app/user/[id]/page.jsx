@@ -160,7 +160,7 @@ export default function UserPage({ params: paramsPromise }) {
           </div>
         )}
       </div>
-      <div className="absolute flex flex-col gap-1 pb-1 lg:bottom-0 md:bottom-0 -bottom-32 text-center h-14 justify-end w-full font-lexend text-[.5rem] lg:text-[.7rem]">
+      <div className="absolute flex flex-col gap-1 pb-1 lg:bottom-0 md:bottom-0 -bottom-32 text-center h-14 justify-end w-full font-lexend text-[.5rem] lg:text-[.7rem] z-50">
         <p className="text-[10px]">
           Create you own{" "}
           <Link
@@ -170,7 +170,7 @@ export default function UserPage({ params: paramsPromise }) {
             Click
           </Link>
         </p>
-        <p className="text-[10px]">Made with 💗 by Aayush</p>
+        <p className="text-[10px] z-50">Made with 💗 by Aayush</p>
       </div>
     </>
   );
